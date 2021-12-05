@@ -18,8 +18,10 @@ The automatic presentation can be recorded for distribution.
 Moreover, the presentation can also be 
 distributed in a self-contained jar by using Proyek assemble task.
 
-Pre-built jars for the Presentasi example in this repo is available in this 
-repo's [release page](https://github.com/sireum/presentasi-example/releases).
+Pre-built jars for the Presentasi example in this repo are available:
+
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts.jar
 
 ## Generating Presentation
 
