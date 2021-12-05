@@ -24,6 +24,7 @@ val home = Os.slashDir.up.canon
 val resources = home / "jvm" / "src" / "main" / "resources"
 val image = resources / "image"
 val video = resources / "video"
+val claps = resources / "audio" / "Clapping-sound-effect.mp3"
 
 val slide1 = Slide(
   path = (image / "Slang.001.png").string,
@@ -87,6 +88,9 @@ val slide6 = Slide(
   text =
     s"""
      Thank you all for attending! We now can take any questions that you might have.
+
+     [-1000]
+     [1.0; $claps]
      """
 )
 
