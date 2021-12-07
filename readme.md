@@ -49,35 +49,46 @@ sireum proyek assemble --main Presentasi <path>
 
 To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
 
-* macOS/Linux:
+* **macOS:**
 
   ```
-  java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar [ #<slide-num> | <time-millis> ]
+  $SIREUM_HOME/bin/mac/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar [ #<slide-num> | <time-millis> ]
   ```
 
-* Windows:
+* **Linux:**
 
   ```
-  java -jar <path>\out\presentasi-example\assemble\presentasi-example.jar [ #<slide-num> | <time-millis> ]
+  $SIREUM_HOME/bin/linux/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar [ #<slide-num> | <time-millis> ]
   ```
-  
-If the application is somehow stuck when loading resources in your machine, e.g.,:
 
-```
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.001.png ... done
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/B55EB8-Hello__Today_I_.mp3 ... done
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/F81371-Let_me_first_gi.mp3 ... done
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.002.png ... done
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/5F75B1-Recent_years_ha.mp3 ... done
-Loading jar:file:/.../presentasi-example-azure-ryan.jar!/video/demo-1.mp4 ...
-```
+* **Windows:**
 
-You can first uncompress the jar file and then run it, e.g.:
+  ```
+  %SIREUM_HOME%\bin\win\java\bin\java.exe -jar <path>\out\presentasi-example\assemble\presentasi-example.jar [ #<slide-num> | <time-millis> ]
+  ```
 
-```
-unzip -d presentasi-example presentasi-example-azure-ryan.jar
-java -cp presentasi-example Presentasi
-```
+### Known Issues
 
+* If the application is somehow stuck when loading resources in your machine, e.g.,:
 
+  ```
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.001.png ... done
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/B55EB8-Hello__Today_I_.mp3 ... done
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/F81371-Let_me_first_gi.mp3 ... done
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.002.png ... done
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/5F75B1-Recent_years_ha.mp3 ... done
+  Loading jar:file:/.../presentasi-example-azure-ryan.jar!/video/demo-1.mp4 ...
+  ```
 
+  You can first uncompress the jar file and then run it, e.g.:
+
+  ```
+  unzip -d presentasi-example presentasi-example-azure-ryan.jar
+  $SIREUM_HOME/bin/linux/java/bin/java -cp presentasi-example Presentasi
+  ```
+
+* If you are using Linux and the application throws an exception due to some ffmpeg libav shared library issues, try installing pre-built libraries:
+
+  ```
+  $SIREUM_HOME/bin/install/ffmpeg-libs.cmd
+  ```
