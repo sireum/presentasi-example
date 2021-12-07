@@ -60,3 +60,24 @@ To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
   ```
   java -jar <path>\out\presentasi-example\assemble\presentasi-example.jar [ #<slide-num> | <time-millis> ]
   ```
+  
+If the application is somehow stuck when loading resources in your machine, e.g.,:
+
+```
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.001.png ... done
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/B55EB8-Hello__Today_I_.mp3 ... done
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/F81371-Let_me_first_gi.mp3 ... done
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/image/Slang.002.png ... done
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/audio/5F75B1-Recent_years_ha.mp3 ... done
+Loading jar:file:/.../presentasi-example-azure-ryan.jar!/video/demo-1.mp4 ...
+```
+
+You can first uncompress the jar file and then run it, e.g.:
+
+```
+unzip -d presentasi-example presentasi-example-azure-ryan.jar
+java -cp presentasi-example Presentasi
+```
+
+
+
