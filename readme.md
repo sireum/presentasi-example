@@ -22,7 +22,7 @@ Pre-built jars for the Presentasi example in this repo are available:
 
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-aws-amy.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
-* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts.jar
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.jar
 
 ## Generating Presentation
 
