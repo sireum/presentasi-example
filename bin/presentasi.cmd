@@ -26,13 +26,19 @@ val image = resources / "image"
 val video = resources / "video"
 val claps = resources / "audio" / "Clapping-sound-effect.mp3"
 
+val sireumW: String = Os.cliArgs match {
+  case ISZ("Azure", _*) => "Seereeum"
+  case ISZ("Aws", "Amy", _*) => "Seereum"
+  case _ => "Seereeum"
+}
+
 val slide1 = Slide(
   path = (image / "Slang.001.png").string,
   delay = 0,
   text =
     s"""
      [2000]
-     Hello! Today I am going to present Slang, the Seereeum Programming Language.
+     Hello! Today I am going to present Slang, the $sireumW Programming Language.
 
      Let me first give the motivation for our work.
      """
@@ -78,6 +84,7 @@ val video5 = Video(
   rate = 1.0,
   start = 4000.0,
   end = 10000.0,
+  useVideoDuration = T,
   textOpt = Some(
     s"""
      The implementation was hand-translated from a C code that is available online.
@@ -99,4 +106,4 @@ val slide6 = Slide(
 
 val presentation = Presentation.empty + slide1 + slide2 + video3 + video4 + video5 + slide6
 
-presentation.cli(Os.cliArgs)
+presentation(delay = 800).cli(Os.cliArgs)
