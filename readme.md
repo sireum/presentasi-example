@@ -24,8 +24,6 @@ Pre-built jars for the Presentasi example in this repo are available:
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.jar
 
-A full presentation/talk example is available at: https://github.com/sireum/tccoe22-logika
-
 ## Generating Presentation
 
 ```
@@ -37,10 +35,11 @@ where `<path>` is the local path of this repo.
 ## Running Presentation
 
 ```
-sireum proyek run <path> Presentasi [ "#<slide-num>" | <time-millis> ]
+sireum proyek run <path> Presentasi ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
 ```
 
-where `<slide-num>` and `<time-millis>` are optional non-negative integers to skip to.
+where `<slide-num>` and `<time-millis>` are optional non-negative integers to skip to; `<w>` and `<h>` are the optional 
+width and height pixel numbers to scale the presentation window to.
 
 ## Assembling Presentation .jar
 
@@ -55,19 +54,19 @@ To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
 * **macOS:**
 
   ```
-  $SIREUM_HOME/bin/mac/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar [ "#<slide-num>" | <time-millis> ]
+  $SIREUM_HOME/bin/mac/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
   ```
 
 * **Linux:**
 
   ```
-  $SIREUM_HOME/bin/linux/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar [ "#<slide-num>" | <time-millis> ]
+  $SIREUM_HOME/bin/linux/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
   ```
 
 * **Windows:**
 
   ```
-  %SIREUM_HOME%\bin\win\java\bin\java.exe -jar <path>\out\presentasi-example\assemble\presentasi-example.jar [ "#<slide-num>" | <time-millis> ]
+  %SIREUM_HOME%\bin\win\java\bin\java.exe -jar <path>\out\presentasi-example\assemble\presentasi-example.jar ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
   ```
 
 ### Known Issues
