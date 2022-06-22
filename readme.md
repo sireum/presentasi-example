@@ -35,7 +35,7 @@ where `<path>` is the local path of this repo.
 ## Running Presentation
 
 ```
-sireum proyek run <path> Presentasi ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
+sireum proyek run <path> Presentasi ( "#<slide-num>" | <time-millis> | <w>x<h> )*
 ```
 
 where `<slide-num>` and `<time-millis>` are optional non-negative integers to skip to; `<w>` and `<h>` are the optional 
@@ -54,13 +54,13 @@ To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
 * **macOS:**
 
   ```
-  $SIREUM_HOME/bin/mac/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
+  $SIREUM_HOME/bin/mac/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( "#<slide-num>" | <time-millis> | <w>x<h> )*
   ```
 
 * **Linux:**
 
   ```
-  $SIREUM_HOME/bin/linux/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( [ "#<slide-num>" | <time-millis> ] | <w>x<h> )*
+  $SIREUM_HOME/bin/linux/java/bin/java -jar <path>/out/presentasi-example/assemble/presentasi-example.jar ( "#<slide-num>" | <time-millis> | <w>x<h> )*
   ```
 
 * **Windows:**
