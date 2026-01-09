@@ -19,7 +19,7 @@ substAwsAmy:
 ![](jvm/src/main/resources/image/Slang.001.png)
 
 * [2000]
-  Hello! Today I am going to present Slang, the $sireumW Programming Language.
+  Hello! Today I am going to present Slang, the $sireumW$ Programming Language.
 
 * Let me first give the motivation for our work.
 
@@ -39,10 +39,18 @@ substAwsAmy:
 
 ![IVE demo](jvm/src/main/resources/video/demo-1.mp4)
 
+# sha3 demo
+
+`delay = 0, volume = 1.0, rate = 1.0, start = 0, end = 1000.0`
+
+![sha3 demo](jvm/src/main/resources/video/demo-2.mp4)
+
+* For this demonstration, I will use a sha three crypto algorithm implementation in Slang.
+
 
 # sha3 demo
 
-`delay = 0, volume = 1.0, rate = 1.0, start = 4000.0, end = 10000.0`
+`delay = 0, volume = 1.0, rate = 1.0, start = 4000.0, end = 10000.0, useVideoDuration = T`
 
 ![sha3 demo](jvm/src/main/resources/video/demo-2.mp4)
 
@@ -58,4 +66,4 @@ substAwsAmy:
 * Thank you all for attending! We now can take any questions that you might have.
 
 * [-1000]
-  [1.0; $claps]
+  [1.0; $claps$]
