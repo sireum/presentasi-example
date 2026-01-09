@@ -32,6 +32,14 @@ sireum presentasi gen <path>
 
 where `<path>` is the local path of this repo.
 
+### Using Azure
+
+Define the `AZURE_KEY` environment variable using one of your Azure account text2speech service keys.
+
+### Using AWS
+
+You need to install [AWS CLI](https://aws.amazon.com/cli) and configure it (`aws configure`).
+
 ## Running Presentation
 
 ```
@@ -89,8 +97,4 @@ To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
   $SIREUM_HOME/bin/linux/java/bin/java -cp presentasi-example Presentasi
   ```
 
-* If you are using Linux and the application throws an exception due to some ffmpeg libav shared library issues, try installing pre-built libraries:
-
-  ```
-  $SIREUM_HOME/bin/install/ffmpeg-libs.cmd
-  ```
+* If you are using Linux, the application might throw an exception due to some ffmpeg libav shared library issues.
