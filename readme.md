@@ -36,9 +36,17 @@ where `<path>` is the local path of this repo.
 
 Define the `AZURE_KEY` environment variable using one of your Azure account text2speech service keys.
 
+```
+sireum presentasi gen -s azure <path>
+```
+
 ### Using AWS
 
 You need to install [AWS CLI](https://aws.amazon.com/cli) and configure it (`aws configure`).
+
+```
+sireum presentasi gen -s aws <path>
+```
 
 ## Running Presentation
 
