@@ -2,3 +2,5 @@
 /out
 /log
 *.jar
+*.srt
+*.vtt

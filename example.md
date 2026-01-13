@@ -3,6 +3,8 @@ name: Presentasi
 delay: 800
 audio:
   - claps: jvm/src/main/resources/audio/Clapping-sound-effect.mp3
+cc:
+  - sireumW: Sireum
 subst:
   - sireumW: Seereeum
 substAzure:
