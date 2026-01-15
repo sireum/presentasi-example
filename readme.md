@@ -51,11 +51,11 @@ sireum presentasi gen -s aws <path>
 ## Running Presentation
 
 ```
-sireum proyek run <path> Presentasi ( "#<slide-num>" | <time-millis> | <w>x<h> )*
+sireum proyek run <path> Presentasi ( -r | "#<slide-num>" | <time-millis> | <w>x<h> )*
 ```
 
 where `<slide-num>` and `<time-millis>` are optional non-negative integers to skip to; `<w>` and `<h>` are the optional 
-width and height pixel numbers to scale the presentation window to.
+width and height pixel numbers to scale the presentation window to; and `-r` enables screen and audio recording (requires [sox](https://sourceforge.net/projects/sox/)).
 
 ## Assembling Presentation .jar
 
