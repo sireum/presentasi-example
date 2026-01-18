@@ -38,9 +38,11 @@ rm -fR out/presentasi && sireum presentasi gen -s azure . && sireum proyek run .
 rm -fR out/presentasi && sireum presentasi gen . && sireum proyek run . Presentasi -r && bin/post-record.cmd . && mv out/presentasi/Presentasi/Presentasi-srt.mp4 presentasi-example-mary-tts-dfki-spike-hsmm.mp4
 ```
 
-Also, a transcription of the presentations is available as `readme.md` with `.webp` and animated `.gif` images (for videos) at (requires [cwebp](https://developers.google.com/speed/webp/docs/cwebp)):
+Also, a transcription of the presentations is available as `readme.md` with `.webp` and animated `.gif` images (for videos) at:
 
 [slides/readme.md](slides/readme.md)
+
+Generating slides requires [cwebp](https://developers.google.com/speed/webp/docs/cwebp), e.g.:
 
 ```sh
 sireum presentasi gen --slides . && mv out/presentasi/Presentasi/Slides slides
