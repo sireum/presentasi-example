@@ -18,11 +18,33 @@ The automatic presentation can be recorded for distribution.
 Moreover, the presentation can also be 
 distributed in a self-contained jar by using Proyek assemble task.
 
-Pre-built jars for the Presentasi example in this repo are available:
+Pre-built `.jar`s for the Presentasi example in this repo are available:
 
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-aws-amy.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.jar
+
+Automatically generated `.mp4`s for the Presentasi example are also available:
+
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-aws-amy.mp4
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.mp4
+* https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.mp4
+
+The commands used to generate the subtitled `.mp4`s inside a local copy of this repo directory were (requires [ffmpeg](https://ffmpeg.org/) with `x265` and `aac` support):
+
+```sh
+rm -fR out/presentasi && sireum presentasi gen -s aws . && sireum proyek run . Presentasi -r && bin/post-record.cmd . && mv out/presentasi/Presentasi/Presentasi-srt.mp4 presentasi-example-aws-amy.mp4
+rm -fR out/presentasi && sireum presentasi gen -s azure . && sireum proyek run . Presentasi -r && bin/post-record.cmd . && mv out/presentasi/Presentasi/Presentasi-srt.mp4 presentasi-example-azure-ryan.mp4
+rm -fR out/presentasi && sireum presentasi gen . && sireum proyek run . Presentasi -r && bin/post-record.cmd . && mv out/presentasi/Presentasi/Presentasi-srt.mp4 presentasi-example-mary-tts-dfki-spike-hsmm.mp4
+```
+
+Also, a transcription of the presentations is available as `readme.md` with `.webp` and animated `.gif` images (for videos) at (requires [cwebp](https://developers.google.com/speed/webp/docs/cwebp)):
+
+[slides/readme.md](slides/readme.md)
+
+```sh
+sireum presentasi gen --slides . && mv out/presentasi/Presentasi/Slides slides
+```
 
 ## Generating Presentation
 
