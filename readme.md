@@ -42,7 +42,7 @@ Also, a transcription of the presentations is available as `readme.md` with `.we
 
 [slides/readme.md](slides/readme.md)
 
-Generating slides requires [cwebp](https://developers.google.com/speed/webp/docs/cwebp), e.g.:
+Slides generation optionally use [cwebp](https://developers.google.com/speed/webp/docs/cwebp), e.g.:
 
 ```sh
 sireum presentasi gen --slides . && mv out/presentasi/Presentasi/Slides slides
