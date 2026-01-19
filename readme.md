@@ -12,7 +12,7 @@ based on the specified relative timing information.
 The specification language is in the form of either:
 
 1. Slash (Slang universal shell) script to build objects defined by the 
-[Presentation](https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/presentasi/Presentation.scala) Slang types (e.g., [bin/.presentasi.cmd](bin/.presentasi.cmd)).
+[Presentation](https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/presentasi/Presentation.scala) Slang types (e.g., [bin/.presentasi.cmd](bin/.presentasi.cmd)); or,
 
 2. Markdown with YAML frontmatter specifying the Presentasi Slang type attributes, and a sequence of heading (`#`) with an image/video, an optional inline code for specifying Presentasi entry Slang type attributes (e.g., [example.md](https://raw.githubusercontent.com/sireum/presentasi-example/refs/heads/master/example.md)).
 
@@ -25,7 +25,7 @@ Pre-built `.jar`s for the Presentasi example in this repo are available:
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.jar
 
-Automatically generated (subtitled) `.mp4`s for the Presentasi example are also available (use [VLC](https://www.videolan.org/vlc/)):
+Automatically generated (subtitled) `.mp4`s for the Presentasi example are also available (use [VLC](https://www.videolan.org/vlc/) if your media player cannot play the `.mp4`s):
 
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-aws-amy.mp4
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.mp4
