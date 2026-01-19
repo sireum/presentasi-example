@@ -9,14 +9,15 @@ and generates a JavaFX application that "presents" it by first automatically
 synthesizing text to speech and computing slide, audio, or video timeline
 based on the specified relative timing information.
 
-The specification language is in the form of a Slash (Slang universal shell)
-script to build objects defined by the 
-[Presentation](https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/presentasi/Presentation.scala)
-Slang types.
+The specification language is in the form of either:
+
+1. Slash (Slang universal shell) script to build objects defined by the 
+[Presentation](https://github.com/sireum/runtime/blob/master/library/shared/src/main/scala/org/sireum/presentasi/Presentation.scala) Slang types (e.g., [bin/.presentasi.cmd](bin/.presentasi.cmd)).
+
+2. Markdown with YAML frontmatter specifying the Presentasi Slang type attributes, and a sequence of heading (`#`) with an image/video, an optional inline code for specifying Presentasi entry Slang type attributes (e.g., [example.md](https://raw.githubusercontent.com/sireum/presentasi-example/refs/heads/master/example.md)).
 
 The automatic presentation can be recorded for distribution.
-Moreover, the presentation can also be 
-distributed in a self-contained jar by using Proyek assemble task.
+Moreover, the presentation can also be distributed in a self-contained jar by using Proyek assemble task.
 
 Pre-built `.jar`s for the Presentasi example in this repo are available:
 
@@ -24,13 +25,13 @@ Pre-built `.jar`s for the Presentasi example in this repo are available:
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.jar
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.jar
 
-Automatically generated `.mp4`s for the Presentasi example are also available:
+Automatically generated (subtitled) `.mp4`s for the Presentasi example are also available (use [VLC](https://www.videolan.org/vlc/)):
 
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-aws-amy.mp4
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-azure-ryan.mp4
 * https://github.com/sireum/presentasi-example/releases/download/demo/presentasi-example-mary-tts-dfki-spike-hsmm.mp4
 
-The commands used to generate the subtitled `.mp4`s inside a local copy of this repo directory were (requires [ffmpeg](https://ffmpeg.org/) with `x265` and `aac` support):
+The commands used to generate the `.mp4`s inside a local copy of this repo directory in macOS were (requires [ffmpeg](https://ffmpeg.org/) with `x265` and `aac` support, and AWS and Azure setup described below):
 
 ```sh
 rm -fR out/presentasi && sireum presentasi gen -s aws . && sireum proyek run . Presentasi -r && bin/post-record.cmd . && mv out/presentasi/Presentasi/Presentasi-srt.mp4 presentasi-example-aws-amy.mp4
