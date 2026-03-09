@@ -131,3 +131,212 @@ To run the jar file (use Java shipped with Sireum or Java runtime with JavaFX):
   ```
 
 * If you are using Linux, the application might throw an exception due to some ffmpeg libav shared library issues.
+
+## Presentasi Markdown Syntax
+
+Presentasi specifications can be written in Markdown with YAML frontmatter.
+Files named `readme.md` are excluded.
+See [example.md](https://raw.githubusercontent.com/sireum/presentasi-example/refs/heads/master/example.md) for a working example.
+
+### YAML Frontmatter
+
+```yaml
+---
+name: Presentasi
+delay: 800
+textDelay: 0
+vseekDelay: 0
+textVolume: 1.0
+trailing: 0
+granularity: 0
+audio:
+  - claps: jvm/src/main/resources/audio/Clapping-sound-effect.mp3
+cc:
+  - sireumW: Sireum
+subst:
+  - sireumW: Seereeum
+substAzure:
+  - sireumW: Seereeum
+substAwsAmy:
+  - sireumW: Seereum
+---
+```
+
+| Key | Type | Description | Default |
+|---|---|---|---|
+| `name` | String | Java identifier used as the generated class name | `Presentasi` |
+| `delay` | Integer | Default pause (ms) between speech segments | `0` |
+| `textDelay` | Integer | Text delay (ms) | `0` |
+| `vseekDelay` | Integer | Video seek delay (ms) | `0` |
+| `textVolume` | Float | Volume for synthesized speech (0.0–1.0+) | `1.0` |
+| `trailing` | Integer | Trailing time (ms) after the last entry | `0` |
+| `granularity` | Integer | Timeline granularity (ms) | `0` |
+| `audio` | List | Named audio file references (`key: path`) | |
+| `cc` | List | Closed caption / subtitle display text (`key: displayText`) | |
+| `subst` | List | TTS pronunciation substitutions (`key: spokenText`) | |
+| `subst<Service>` | List | Service-specific TTS substitution overrides | |
+
+#### Audio References
+
+Audio files are declared in the `audio` section and referenced in speech text
+using `$key$` syntax:
+
+```yaml
+audio:
+  - claps: jvm/src/main/resources/audio/Clapping-sound-effect.mp3
+```
+
+Then in speech text: `[1.0; $claps$]` plays the audio at volume 1.0.
+
+#### Closed Captions and TTS Substitutions
+
+The `cc` and `subst` sections work together with `$term$` syntax in speech text.
+
+- **`cc`**: Defines the subtitle display text for a term.
+  TTS engines mispronounce code identifiers, so `cc` preserves
+  the original identifier in subtitles.
+
+- **`subst`**: Defines the speakable pronunciation sent to TTS.
+  This is what the TTS engine actually reads aloud.
+
+```yaml
+cc:
+  - tempSensor: TempSensor
+subst:
+  - tempSensor: Temp Sensor
+```
+
+When `$tempSensor$` appears in speech text, the TTS engine receives
+"Temp Sensor" while the subtitle displays "TempSensor".
+
+#### Service-Specific Substitutions
+
+Different TTS engines may need different pronunciations.
+Service-specific `subst` sections override the base `subst` when the
+TTS service arguments match the section suffix.
+
+```yaml
+subst:
+  - sireumW: Seereeum
+substAzure:
+  - sireumW: Seereeum
+substAwsAmy:
+  - sireumW: Seereum
+```
+
+The suffix is matched against the TTS service arguments prefix (e.g.,
+`Azure` for Azure, `AwsAmy` for AWS with the Amy voice).
+
+### Slides
+
+Each slide is defined by a heading, an optional inline code block for
+properties, an image, and bullet points for speech text:
+
+```markdown
+# Slide Title
+
+`delay = 0`
+
+![](jvm/src/main/resources/image/Slide.001.png)
+
+* First speech paragraph.
+
+* Second speech paragraph.
+```
+
+#### Slide Properties
+
+Properties are specified in an inline code block (backtick-delimited)
+as comma-separated `key = value` pairs:
+
+| Property | Type | Description |
+|---|---|---|
+| `delay` | Integer | Delay (ms) before speech starts; negative values are relative to the previous slide's end |
+
+If no inline code block is present, `delay` defaults to `0`.
+
+### Videos
+
+Videos are detected by the `.mp4` file extension.
+They support the same structure as slides but with additional properties:
+
+```markdown
+# Demo Video
+
+`delay = 0, volume = 1.0, rate = 1.0, start = 0.0, end = 0.0`
+
+![Demo](jvm/src/main/resources/video/demo.mp4)
+
+* Optional speech during the video.
+```
+
+#### Video Properties
+
+| Property | Type | Description | Default |
+|---|---|---|---|
+| `delay` | Integer | Delay (ms) before the video starts | `0` |
+| `volume` | Float | Video audio volume (0.0–1.0+) | `1.0` |
+| `rate` | Float | Playback rate | `1.0` |
+| `start` | Float | Start position (ms) within the video | `0.0` |
+| `end` | Float | End position (ms); `0.0` means play to the end | `0.0` |
+| `useVideoDuration` | Boolean | Use video duration for timeline (`T`/`true` or `F`/`false`) | `F` |
+
+If speech text is provided with a video, TTS audio plays over the video.
+If no speech text is provided, only the video's own audio plays.
+
+### Speech Text Syntax
+
+Speech text is written as bullet points (`*`) under a slide or video.
+Each bullet point starts a new speech segment.
+
+#### Delay Override
+
+A bracket prefix overrides the default delay for a speech segment:
+
+- **`[2000]`** — Positive value: absolute pause (ms) before this segment
+- **`[-1000]`** — Negative value: relative delay (continuation from previous slide)
+
+```markdown
+* [2000]
+  Hello! This starts after a 2-second pause.
+
+* This uses the default delay.
+
+* [-1000]
+  This continues 1 second before the previous segment ends.
+```
+
+#### Term Substitution
+
+Use `$term$` to reference `cc`/`subst` entries:
+
+```markdown
+* The $tempSensor$ component reads the current temperature.
+```
+
+The TTS engine speaks the `subst` value while subtitles show the `cc` value.
+
+#### Audio Playback
+
+Reference a named audio file declared in the `audio` frontmatter section:
+
+```markdown
+* [1.0; $claps$]
+```
+
+The format is `[volume; $audioKey$]` where `volume` is a float.
+
+### HTML Comments
+
+HTML comments (`<!-- -->`) are ignored and can be used to comment out
+slides or notes:
+
+```markdown
+<!-- This slide is skipped
+# Unused Slide
+
+![](image/unused.png)
+
+* This won't be spoken.
+-->
+```
