@@ -26,7 +26,7 @@ val presentasi = moduleJvm(
   id = "presentasi",
   baseDir = homeDir,
   jvmDeps = ISZ(),
-  jvmIvyDeps = ISZ("ch.randelshofer:org.monte.media.screenrecorder:")
+  jvmIvyDeps = ISZ()
 )
 
 val project = Project.empty + presentasi
