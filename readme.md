@@ -276,6 +276,7 @@ as comma-separated `key = value` pairs:
 | Property | Type | Description |
 |---|---|---|
 | `delay` | Integer | Delay (ms) before speech starts; negative values are relative to the previous slide's end |
+| `chapter` | String | Marks the start of a chapter (section) at this slide in the recorded `.mp4`; see [Chapter Markers](#chapter-markers) |
 
 If no inline code block is present, `delay` defaults to `0`.
 
@@ -304,9 +305,37 @@ They support the same structure as slides but with additional properties:
 | `start` | Float | Start position (ms) within the video | `0.0` |
 | `end` | Float | End position (ms); `0.0` means play to the end | `0.0` |
 | `useVideoDuration` | Boolean | Use video duration for timeline (`T`/`true` or `F`/`false`) | `F` |
+| `chapter` | String | Marks the start of a chapter (section) at this video in the recorded `.mp4`; see [Chapter Markers](#chapter-markers) | |
 
 If speech text is provided with a video, TTS audio plays over the video.
 If no speech text is provided, only the video's own audio plays.
+
+### Chapter Markers
+
+Add a `chapter` property to any slide or video to mark the start of a
+chapter (section).  Chapters are embedded into the recorded master
+`.mp4` (produced by the offline assembly script `Presentasi.cmd`) as
+ffmpeg chapter metadata, so they appear in players and services that
+support chapters — e.g. QuickTime, VLC, Google Drive, and YouTube.
+
+```markdown
+# Code Generation Demo
+
+`chapter = "Code Generation"`
+
+![Demo](jvm/src/main/resources/video/demo.mp4)
+
+* Speech text describing the demo.
+```
+
+Each marker spans from its slide/video until the next `chapter` marker
+(or the end of the presentation for the last one), so a `chapter` need
+not appear on every slide.  It can be combined with other properties,
+and the title may contain commas or `=` when quoted:
+
+```markdown
+`delay = 1500, chapter = "Verification, Part 1"`
+```
 
 ### Speech Text Syntax
 
